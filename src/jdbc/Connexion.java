@@ -16,7 +16,6 @@ public class Connexion {
 			//Class.forName("com.mysql.jdbc.Driver");
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();	// Gestion des erreurs de chargement
 			System.out.println("Erreur lors du chargement du driver JDBC pour mySql");
 		}
@@ -25,6 +24,7 @@ public class Connexion {
 	
 	/**
 	 * Ouverture de la connexion avec la base de données MySql
+	 * @param url
 	 * @param utilisateur
 	 * @param mdp
 	 * @return
@@ -37,7 +37,6 @@ public class Connexion {
 			String urlComplet = url + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 			connexion = DriverManager.getConnection(urlComplet, utilisateur, mdp);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("Erreur lors de l'ouverture de la connexion avec la base de données");
 		}
@@ -54,7 +53,6 @@ public class Connexion {
 		try {
 			connexion.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("Erreur lors de la fermeture de la connexion avec la base de données");
 		}

@@ -36,7 +36,7 @@ public class LectureCSV {
             	}
             }
             
-            System.out.println(line);
+            //System.out.println(line);
         }
 
         br.close();
