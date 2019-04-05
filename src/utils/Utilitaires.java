@@ -115,7 +115,7 @@ public class Utilitaires {
 				int idTypeMesure = (int) listResult.get(2);
 				int idIlot = (int) listResult.get(3);
 				
-				if (compteurBatch < NB_BATCH_BEFORE_INSERT) {
+				if (compteurBatch <= NB_BATCH_BEFORE_INSERT) {
 					stmt.setFloat(1, value);
 					stmt.setObject(2, dateF);
 					stmt.setInt(3, idTypeMesure);
@@ -167,8 +167,8 @@ public class Utilitaires {
 		
 		// Récupérer l'identifiant de l'ilot
 		int idIlot = -1;
-		if (ilot.contains(ilot + salle)) {		// Recherche dans la HashMap
-			idIlot = ilots.get(ilot + salle);
+		if (ilot.contains(ilot + salle + batiment)) {		// Recherche dans la HashMap
+			idIlot = ilots.get(ilot + salle + batiment);
 		} else {
 			idIlot = getIlot(ilot, salle, batiment);	// Recherche dans la base de données	
 		}
@@ -379,7 +379,7 @@ public class Utilitaires {
 			// Si une valeur a été trouvée et n'est pas présente dans la hashmap
 			// alors on l'ajoute dans la hashmap
 			if (idResult != -1 && !ilots.containsKey(ilot + salle + batiment)) {
-				typesMesure.put(ilot + salle + batiment, idResult);
+				ilots.put(ilot + salle + batiment, idResult);
 			}
 			
 			// Si le résultat n'est pas dans la base de données, on l'ajoute 
