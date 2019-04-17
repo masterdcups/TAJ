@@ -19,7 +19,6 @@ public class Connexion {
 			e.printStackTrace();	// Gestion des erreurs de chargement
 			System.out.println("Erreur lors du chargement du driver JDBC pour mySql");
 		}
-
 	}
 	
 	/**

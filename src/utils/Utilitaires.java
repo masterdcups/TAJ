@@ -89,8 +89,12 @@ public class Utilitaires {
 	 * Prend une arrayList en argument et les insère dans la base de données par paquet de NB_BATCH_BEFORE_INSERT
 	 * @param listeEquipement
 	 * @return
+	 * @throws SQLException 
 	 */
-	public void importBatch(List<String> listeEquipement) {
+	public void importBatch(List<String> listeEquipement) throws SQLException {
+		
+		// Désactivation de l'autoCommit
+		//connexion.setAutoCommit(false);
 
 		int compteurBatch = 0;
 		
@@ -124,11 +128,13 @@ public class Utilitaires {
 				} else {
 					stmt.executeBatch();	// On execéute le batch
 					compteurBatch = 0;
+					//connexion.commit();
 				}
 			}
 
 		} catch (SQLException e) {
 			System.out.println("Erreur lors de l'insertion d'une mesure");
+			//connexion.rollback();	// Erreur lors de l'insertion du batch, on annule le batch complet ?
 			e.printStackTrace();
 		}		
 		

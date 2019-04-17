@@ -30,9 +30,11 @@ public class Import {
 		// Création de l'objet Utilitaire
 		Utilitaires utilitaires = new Utilitaires(connexion);
 		
-		
+		// Test d'insertion manuelles
 		//utilitaires.insertMesure("co2;u4/302/co2/ilot3;275;2017-09-22T16:27:39.511862;ppm;ilot3");
-		utilitaires.importBatch(listeDonnees);
+		
+		// Lecture du fichier CSV -> importation dans la base
+		//utilitaires.importBatch(listeDonnees);
 		
 		
 		// Fermeture de la connexion à la base de données
